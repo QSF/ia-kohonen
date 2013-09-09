@@ -16,7 +16,7 @@ public class Kohonen {
     private double learningRate;
     private int radius;
     private List<Example> trainingSet = new ArrayList<Example>();
-    private List<List<Double>> weightMatrix;
+    private double[][] weightMatrix;
     
     public Kohonen() {
         Configuration configuration = new Configuration();
@@ -24,7 +24,7 @@ public class Kohonen {
         learningRate = configuration.getLearningRate();
         radius = configuration.getRadius();
         trainingSet = configuration.getTrainingSet();
-        weightMatrix = configuration.getWeightMatrix();
+        weightMatrix = configuration.getMatrix();
     }
     
     public void execute() {
@@ -37,7 +37,6 @@ public class Kohonen {
     }
     
     public void updateWeight(int neuronWinner) {
-        
     }
     
     public void plot() {

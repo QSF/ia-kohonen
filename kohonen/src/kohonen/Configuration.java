@@ -38,6 +38,8 @@ public class Configuration {
     // Representação da matriz de pesos
     private List<List<Double>> weightMatrix;
     
+    private double[][] matrix;
+    
     public Configuration() {
         read();
     }
@@ -74,6 +76,7 @@ public class Configuration {
                         parseSafety(examples[2]));
                 trainingSet.add(ex);
             }
+            listToMatrix();
         } catch (IOException ex) {
             ex.printStackTrace();
         } finally {
@@ -198,12 +201,8 @@ public class Configuration {
         this.trainingSet = trainingSet;
     }
 
-    public List<List<Double>> getWeightMatrix() {
-        return weightMatrix;
-    }
-
-    public void setWeightMatrix(List<List<Double>> weightMatrix) {
-        this.weightMatrix = weightMatrix;
+    public double[][] getMatrix() {
+        return matrix;
     }
     
     public void print() {
@@ -220,6 +219,17 @@ public class Configuration {
         System.out.println("\n*** Matriz de pesos ***");
         for (List<Double> list : weightMatrix) {
             System.out.println(list.get(0) + "," + list.get(1) + "," + list.get(2));
+        }
+    }
+
+    private void listToMatrix() {
+        this.matrix = new double[this.neuronsQuantity][3];
+        int i = 0;
+        for (List<Double> list : this.weightMatrix) {
+            matrix[0][i] = list.get(0);
+            matrix[1][i] = list.get(1);
+            matrix[2][i] = list.get(2);
+            i++;
         }
     }
 }
