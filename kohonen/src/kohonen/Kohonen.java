@@ -28,15 +28,20 @@ public class Kohonen {
     }
     
     public void execute() {
-        updateWeight(defineWinner());
+        for (Example ex : this.trainingSet) {
+            int winner = defineWinner(ex);
+            updateWeight(winner, ex);
+        }
+            
         plot();
     }
     
-    public int defineWinner() {
+    public int defineWinner(Example ex) {
         return 0;
     }
     
-    public void updateWeight(int neuronWinner) {
+    public void updateWeight(int neuronWinner, Example ex) {
+        
     }
     
     public void plot() {
