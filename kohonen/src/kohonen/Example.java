@@ -10,37 +10,37 @@ package kohonen;
  */
 public class Example {
     
-    private double x1;
-    private double x2;
-    private double x3;
+    private double buying;
+    private double maint;
+    private double safety;
 
-    public Example(double x1, double x2, double x3) {
-        this.x1 = x1;
-        this.x2 = x2;
-        this.x3 = x3;
-    }
-    
-    public double getX1() {
-        return x1;
+    public Example(double buying, double maint, double safety) {
+        this.buying = buying;
+        this.maint = maint;
+        this.safety = safety;
     }
 
-    public void setX1(double x1) {
-        this.x1 = x1;
+    public double getBuying() {
+        return buying;
     }
 
-    public double getX2() {
-        return x2;
+    public void setBuying(double buying) {
+        this.buying = buying;
     }
 
-    public void setX2(double x2) {
-        this.x2 = x2;
+    public double getMaint() {
+        return maint;
     }
 
-    public double getX3() {
-        return x3;
+    public void setMaint(double maint) {
+        this.maint = maint;
     }
 
-    public void setX3(double x3) {
-        this.x3 = x3;
+    public double getSafety() {
+        return safety;
+    }
+
+    public void setSafety(double safety) {
+        this.safety = safety;
     }
 }

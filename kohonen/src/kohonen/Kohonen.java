@@ -15,6 +15,6 @@ public class Kohonen {
      */
     public static void main(String[] args) {
         Configuration config = new Configuration();
-        config.print();
+        // config.print();
     }
 }
