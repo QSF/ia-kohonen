@@ -80,7 +80,7 @@ public class Configuration {
                         parseSafety(examples[2]));
                 trainingSet.add(ex);
             }
-            listToMatrix();
+          
         } catch (IOException ex) {
             ex.printStackTrace();
         } finally {
@@ -96,10 +96,10 @@ public class Configuration {
 
     private void createWeightMatrix() {
         int neuronsQuantity = this.neuronsLine * this.neuronsColumn;
-        weightMatrix = new ArrayList<List<Double>>(neuronsQuantity);
+        weightMatrix = new ArrayList<List<Double>>();
         
         for (int i = 0; i < neuronsQuantity; i++) {
-            List<Double> list = new ArrayList<Double>(3);
+            List<Double> list = new ArrayList<Double>();
             weightMatrix.add(list);
         }
 
@@ -113,6 +113,7 @@ public class Configuration {
             list.add(Double.parseDouble(weightParts[i+2]));
             i += 3;
         }
+        listToMatrix();
     }
     
     public double parseBuying(String example) {
@@ -224,7 +225,7 @@ public class Configuration {
     }
 
     private void listToMatrix() {
-        this.matrix = new double[this.neuronsLine * this.neuronsColumn][3];
+        this.matrix = new double[3][this.neuronsLine * this.neuronsColumn];
         int i = 0;
         for (List<Double> list : this.weightMatrix) {
             matrix[0][i] = list.get(0);
