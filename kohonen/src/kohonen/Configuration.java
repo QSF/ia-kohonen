@@ -173,7 +173,39 @@ public class Configuration {
         }
         return safety;
     }
-        
+
+    public double getLearningRate() {
+        return learningRate;
+    }
+
+    public void setLearningRate(double learningRate) {
+        this.learningRate = learningRate;
+    }
+
+    public int getRadius() {
+        return radius;
+    }
+
+    public void setRadius(int radius) {
+        this.radius = radius;
+    }
+
+    public List<Example> getTrainingSet() {
+        return trainingSet;
+    }
+
+    public void setTrainingSet(List<Example> trainingSet) {
+        this.trainingSet = trainingSet;
+    }
+
+    public List<List<Double>> getWeightMatrix() {
+        return weightMatrix;
+    }
+
+    public void setWeightMatrix(List<List<Double>> weightMatrix) {
+        this.weightMatrix = weightMatrix;
+    }
+    
     public void print() {
         System.out.println("Taxa de aprendizado: " + learningRate);
         System.out.println("Quantidade de Neurônios: " + neuronsQuantity);
