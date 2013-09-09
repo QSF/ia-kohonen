@@ -34,10 +34,10 @@ public class Kohonen {
     public void execute() {
         for (Example ex : this.trainingSet) {
             int winner = defineWinner(ex);
-            //updateWeight(winner, ex);
+            updateWeight(winner, ex);
         }
             
-      //  plot(); 
+        plot(); 
     }
     
     public int defineWinner(Example ex) {
@@ -72,12 +72,12 @@ public class Kohonen {
         int column = neuronWinner%this.neuronsColumn;
         
         //atualiza os pesos da vizinhança
-        for (int i = line - this.radius; i < line + this.radius ; i++) {
+        for (int i = line - this.radius; i <= line + this.radius ; i++) {
             //linha não pode ser negativa
             if (i < 0) 
                 i = 0;
             
-            for (int j = column - this.radius; j < column + this.radius; j++) {
+            for (int j = column - this.radius; j <= column + this.radius; j++) {
                 //coluna não pode ser negativa
                 if (j < 0) 
                     j = 0;
@@ -90,6 +90,7 @@ public class Kohonen {
                     j = column + this.radius;
                 }
             }
+            
             //linha não pode extrapolar a quantidade máxima de linhas
             if (i == this.neuronsLine - 1) {
                 //condição de sai do for
@@ -112,5 +113,6 @@ public class Kohonen {
     
     public void plot() {
         
+        Plot.plot("Kohonen", x, y, z);
     }
 }
