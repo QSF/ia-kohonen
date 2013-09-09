@@ -45,7 +45,47 @@ public class Kohonen {
     }
     
     public void updateWeight(int neuronWinner, Example ex) {
+        //verificar a posição na matriz de vetores
+        int line = neuronWinner/this.neuronsLine;
+        int column = neuronWinner%this.neuronsColumn;
         
+        //atualiza os pesos da vizinhança
+        for (int i = line - this.radius; i < line + this.radius ; i++) {
+            //linha não pode ser negativa
+            if (i < 0) 
+                i = 0;
+            
+            for (int j = column - this.radius; j < column + this.radius; j++) {
+                //coluna não pode ser negativa
+                if (j < 0) 
+                    j = 0;
+                //atualiza o peso
+                this.updateNeuron(i, j, ex);
+                
+                //coluna não pode extrapolar máximo de colunas
+                if (j == this.neuronsColumn - 1) {
+                    //condição sai do for
+                    j = column + this.radius;
+                }
+            }
+            //linha não pode extrapolar a quantidade máxima de linhas
+            if (i == this.neuronsLine - 1) {
+                //condição de sai do for
+                i = line + this.radius;
+            }
+        }
+    }
+    
+    private void updateNeuron(int line, int column, Example ex) {
+        //ve o index da matriz de peso
+        int index = line*this.neuronsColumn + column;
+        double x0 = ex.getBuying();
+        double x1 = ex.getMaint();
+        double x2 = ex.getSafety();
+        //atualiza os pesos
+        this.weightMatrix[0][index] += this.learningRate * (x0 - this.weightMatrix[0][index]);
+        this.weightMatrix[1][index] += this.learningRate * (x1 - this.weightMatrix[1][index]);
+        this.weightMatrix[2][index] += this.learningRate * (x2 - this.weightMatrix[2][index]);
     }
     
     public void plot() {
