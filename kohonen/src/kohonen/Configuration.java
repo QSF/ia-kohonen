@@ -181,28 +181,20 @@ public class Configuration {
         return learningRate;
     }
 
-    public void setLearningRate(double learningRate) {
-        this.learningRate = learningRate;
-    }
-
     public int getRadius() {
         return radius;
-    }
-
-    public void setRadius(int radius) {
-        this.radius = radius;
     }
 
     public List<Example> getTrainingSet() {
         return trainingSet;
     }
 
-    public void setTrainingSet(List<Example> trainingSet) {
-        this.trainingSet = trainingSet;
-    }
-
     public double[][] getMatrix() {
         return matrix;
+    }
+
+    public int getNeuronsQuantity() {
+        return neuronsQuantity;
     }
     
     public void print() {
