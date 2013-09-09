@@ -17,6 +17,8 @@ public class Kohonen {
     private int radius;
     private List<Example> trainingSet = new ArrayList<Example>();
     private double[][] weightMatrix;
+    private int neuronsLine;
+    private int neuronsColumn;
     
     public Kohonen() {
         Configuration configuration = new Configuration();
@@ -25,6 +27,8 @@ public class Kohonen {
         radius = configuration.getRadius();
         trainingSet = configuration.getTrainingSet();
         weightMatrix = configuration.getMatrix();
+        neuronsLine = configuration.getNeuronsLine();
+        neuronsColumn = configuration.getNeuronsColumn();
     }
     
     public void execute() {

@@ -26,8 +26,11 @@ public class Configuration {
     // Parâmetro: pesos das arestas
     private String weight;
     
-    // Parâmetro: quantidade de neurônios
-    private int neuronsQuantity;
+    // Parâmetro: quantidade de linhas de neurônios
+    private int neuronsLine;
+    
+    // Parâmetro: quantidade de colunas neurônios
+    private int neuronsColumn;
     
     // Parâmetro: raio de vizinhança
     private int radius;
@@ -49,7 +52,8 @@ public class Configuration {
             properties.load(new FileInputStream("config.properties"));
             
             learningRate = Double.parseDouble(properties.getProperty("learning-rate"));
-            neuronsQuantity = Integer.parseInt(properties.getProperty("neurons-quantity"));
+            neuronsLine = Integer.parseInt(properties.getProperty("neurons-line"));
+            neuronsColumn = Integer.parseInt(properties.getProperty("neurons-column"));
             weight = properties.getProperty("weight");
             radius = Integer.parseInt(properties.getProperty("radius"));
             
@@ -91,7 +95,7 @@ public class Configuration {
     }
 
     private void createWeightMatrix() {
-        
+        int neuronsQuantity = this.neuronsLine * this.neuronsColumn;
         weightMatrix = new ArrayList<List<Double>>(neuronsQuantity);
         
         for (int i = 0; i < neuronsQuantity; i++) {
@@ -193,13 +197,18 @@ public class Configuration {
         return matrix;
     }
 
-    public int getNeuronsQuantity() {
-        return neuronsQuantity;
+    public int getNeuronsLine() {
+        return neuronsLine;
+    }
+
+    public int getNeuronsColumn() {
+        return neuronsColumn;
     }
     
     public void print() {
         System.out.println("Taxa de aprendizado: " + learningRate);
-        System.out.println("Quantidade de Neurônios: " + neuronsQuantity);
+        System.out.println("Quantidade de Linhas Neurônios: " + neuronsLine);
+        System.out.println("Quantidade de Colunas Neurônios: " + neuronsColumn);
         System.out.println("Pesos das arestas: " + weight);
         System.out.println("Raio de vizinhança:  " + radius);
         
@@ -215,7 +224,7 @@ public class Configuration {
     }
 
     private void listToMatrix() {
-        this.matrix = new double[this.neuronsQuantity][3];
+        this.matrix = new double[this.neuronsLine * this.neuronsColumn][3];
         int i = 0;
         for (List<Double> list : this.weightMatrix) {
             matrix[0][i] = list.get(0);
