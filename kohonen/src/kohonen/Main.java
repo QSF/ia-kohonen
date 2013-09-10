@@ -4,6 +4,8 @@
  */
 package kohonen;
 
+import java.util.Random;
+
 /**
  *
  * @author sean
