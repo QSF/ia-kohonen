@@ -12,6 +12,7 @@ import java.util.List;
  * @author sean
  */
 public class Kohonen {
+    private Plot plot;
     private String widthType;
     
     private double learningRate;
@@ -29,15 +30,24 @@ public class Kohonen {
         weightMatrix = configuration.getMatrix();
         neuronsLine = configuration.getNeuronsLine();
         neuronsColumn = configuration.getNeuronsColumn();
+        
+        String title = "";
+        title += "taxa aprend.:" + this.learningRate;
+        title += "\tcamada de saída:" + this.neuronsLine + "x" + this.neuronsColumn;
+        title += "\traio:" + this.radius;
+        title += "\t" + this.widthType;
+        this.plot = new Plot(title);
+        
     }
     
     public void execute() {
         System.out.println("Começando o treinamento ...");
+        this.plotChart();
         for (Example ex : this.trainingSet) {
             int winner = defineWinner(ex);
             updateWeight(winner, ex);
-        }
-        plot(); 
+            this.plotChart();
+        } 
     }
     
     public int defineWinner(Example ex) {
@@ -121,7 +131,7 @@ public class Kohonen {
         System.out.println(this.weightMatrix[2][index]);
     }
     
-    public void plot() {
+    public void plotChart() {
         int neuronsQuantity = this.neuronsLine*this.neuronsColumn;
         
         double[] x = new double[neuronsQuantity];
@@ -133,12 +143,6 @@ public class Kohonen {
             y[i] = this.weightMatrix[1][i];
             z[i] = this.weightMatrix[2][i];
         }
-        
-        String title = "";
-        title += "taxa aprend.:" + this.learningRate;
-        title += "\tcamada de saída:" + this.neuronsLine + "x" + this.neuronsColumn;
-        title += "\traio:" + this.radius;
-        title += "\t" + this.widthType;
-        Plot.plot(title, x, y, z);
+        this.plot.plot(x, y, z);
     }
 }
