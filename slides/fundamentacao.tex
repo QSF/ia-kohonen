@@ -1,0 +1,50 @@
+\section{Treinamento}
+
+
+\begin{frame}{Treinamento}
+	\begin{itemize}
+	  \item Aprendizado competitivo e não-supervisionado.
+	  \item Um padrão de entrada é apresentado a rede, um neurônio vencem e inicia a atualização dos pesos do neurônio vencedor e de seus vizinhos.
+	  \item A taxa de aprendizado e o raio de vizinhança são decrementados durante o processo de aprendizagem.
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Treinamento}
+
+	\begin{itemize}
+	  \item Atualização dos pesos do neurônio vencedor e de seus vizinhos
+
+\[ w_{ji}(t+1) = \left\{ 
+  \begin{array}{l l}
+    w_{ji}(t) + \eta(t)(x_{i}- w_{ji}(t)) & \quad \text{se j $\in$ $\Lambda$(t)}\\
+    w_{ji}(t) & \quad \text{caso contrário}
+  \end{array} \right.\]
+
+	\end{itemize}
+\end{frame}
+
+
+\begin{lstlisting}
+	 Inicializar pesos e parametros;
+	 repita
+	    para todo padrao de treinamento faca
+	       Definir neuronio vencedor;
+	       Atualizar os pesos deste neuronio e de seus vizinhos;
+	       se o numero do ciclo for multiplo de N entao
+	          Entao reduzir a taxa de aprendizado;
+	       fim-se
+	    fim-para
+	 ate que mapa de caracteristicas nao mudar
+\end{lstlisting}
+
+
+\section{Aplicações}
+
+\begin{frame}{Aplicações}
+	\begin{itemize}
+	  \item Reconhecimento de padrões
+	  \item Agrupamento de dados
+	  \item Mapeamento da voz
+	\end{itemize}
+\end{frame}
