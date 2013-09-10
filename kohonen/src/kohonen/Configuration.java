@@ -49,7 +49,7 @@ public class Configuration {
     
     public void read() {
         try {
-            properties.load(new FileInputStream("config.properties"));
+            properties.load(new FileInputStream("config/config2a1.properties"));
             
             learningRate = Double.parseDouble(properties.getProperty("learning-rate"));
             neuronsLine = Integer.parseInt(properties.getProperty("neurons-line"));
