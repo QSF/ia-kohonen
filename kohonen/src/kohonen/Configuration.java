@@ -43,13 +43,13 @@ public class Configuration {
     
     private double[][] matrix;
     
-    public Configuration() {
-        read();
+    public Configuration(String configFile) {
+        read(configFile);
     }
     
-    public void read() {
+    public void read(String configFile) {
         try {
-            properties.load(new FileInputStream("config/config2a1.properties"));
+            properties.load(new FileInputStream(configFile));
             
             learningRate = Double.parseDouble(properties.getProperty("learning-rate"));
             neuronsLine = Integer.parseInt(properties.getProperty("neurons-line"));

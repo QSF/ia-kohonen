@@ -17,6 +17,11 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        new Kohonen().execute();
+        String configFile = "config.properties";
+        if (args.length == 1) {
+            configFile = args[0];
+        }
+        Configuration configuration = new Configuration(configFile);
+        new Kohonen(configuration).execute();
     }
 }

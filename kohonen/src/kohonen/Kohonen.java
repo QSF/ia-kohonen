@@ -21,9 +21,7 @@ public class Kohonen {
     private int neuronsLine;
     private int neuronsColumn;
     
-    public Kohonen() {
-        Configuration configuration = new Configuration();
-        
+    public Kohonen(Configuration configuration) {        
         learningRate = configuration.getLearningRate();
         radius = configuration.getRadius();
         trainingSet = configuration.getTrainingSet();
