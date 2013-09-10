@@ -168,13 +168,13 @@ public class Configuration {
         
         switch (example) {
             case "low":
-                safety = 0;
+                safety = 3;
                 break;
             case "med":
-                safety = 1;       
+                safety = 2;       
                 break;
             case "high":
-                safety = 2;
+                safety = 1;
                 break;
             default:
                 break;

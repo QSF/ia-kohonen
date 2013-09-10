@@ -4,6 +4,7 @@
  */
 package kohonen;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,11 +33,22 @@ public class Kohonen {
     }
     
     public void execute() {
+        
         for (Example ex : this.trainingSet) {
             int winner = defineWinner(ex);
             updateWeight(winner, ex);
         }
-            
+        System.out.println("Quantidade de exemplos: " + this.trainingSet.size());
+        //imprimir a matriz
+        int qtd = this.neuronsLine*this.neuronsColumn;
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < qtd; j++) {
+                DecimalFormat df = new DecimalFormat("#.###");
+                String formatted = df.format(this.weightMatrix[i][j]);
+                System.out.print(formatted + "\t");
+            }
+            System.out.println();
+        }
         plot(); 
     }
     
@@ -112,7 +124,17 @@ public class Kohonen {
     }
     
     public void plot() {
+        int neuronsQuantity = this.neuronsLine*this.neuronsColumn;
         
+        double[] x = new double[neuronsQuantity];
+        double[] y = new double[neuronsQuantity];
+        double[] z = new double[neuronsQuantity];
+        
+        for (int i = 0; i < neuronsQuantity; i++) {
+            x[i] = this.weightMatrix[0][i];
+            y[i] = this.weightMatrix[1][i];
+            z[i] = this.weightMatrix[2][i];
+        }
         Plot.plot("Kohonen", x, y, z);
     }
 }
