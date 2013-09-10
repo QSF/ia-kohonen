@@ -1,12 +1,14 @@
 This is BibTeX, Version 0.99d (TeX Live 2012/Debian)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: artigo.aux
+A level-1 auxiliary file: ./som/estrutura.aux
+A level-1 auxiliary file: ./som/cor.aux
 A level-1 auxiliary file: ./resultados/resultados.aux
 The style file: plain.bst
 Database file #1: artigo.bib
 You've used 1 entry,
             2118 wiz_defined-function locations,
-            503 strings with 4071 characters,
+            505 strings with 4103 characters,
 and the built_in function-call counts, 235 in all, are:
 = -- 19
 > -- 7
