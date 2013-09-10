@@ -12,6 +12,7 @@ public class PlotTest {
         double[] x = {1,2,3,4,5,6,7,8,9} ,
                 y = {1,2,3,4,5,6,7,8,9} ,
                 z = {1,2,3,4,5,6,7,8,9};
-        Plot.plot("", x, y, z);
+        
+        new Plot("").plot( x, y, z);
     }
 }
