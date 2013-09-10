@@ -1,5 +1,7 @@
 package kohonen.test;
 
+import java.util.Random;
+
 /**
  *
  * @author vinicius
@@ -14,5 +16,12 @@ public class UpdateTest {
         
         int index = line*4 + column;
         System.out.println("index: " + index);
+        
+        Random random = new Random();
+       
+        for (int i = 0; i < 60; i++) {
+           double valor = random.nextDouble();
+           System.out.print(valor + ",");            
+        }
     }
 }

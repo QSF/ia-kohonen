@@ -20,6 +20,15 @@ public class Example {
         this.safety = safety;
     }
 
+    @Override
+    public String toString() {
+        String str = "{";
+        str += this.buying + ",";
+        str += this.maint + ",";
+        str += this.safety + "}";
+        return str;
+    }
+
     public double getBuying() {
         return buying;
     }

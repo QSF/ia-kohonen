@@ -13,6 +13,7 @@ import java.util.List;
  * @author sean
  */
 public class Kohonen {
+    private String widthType;
     
     private double learningRate;
     private int radius;
@@ -21,7 +22,8 @@ public class Kohonen {
     private int neuronsLine;
     private int neuronsColumn;
     
-    public Kohonen(Configuration configuration) {        
+    public Kohonen(Configuration configuration, String widthType) {        
+        this.widthType = widthType;
         learningRate = configuration.getLearningRate();
         radius = configuration.getRadius();
         trainingSet = configuration.getTrainingSet();
@@ -31,26 +33,16 @@ public class Kohonen {
     }
     
     public void execute() {
-        
+        System.out.println("Começando o treinamento ...");
         for (Example ex : this.trainingSet) {
             int winner = defineWinner(ex);
             updateWeight(winner, ex);
-        }
-        System.out.println("Quantidade de exemplos: " + this.trainingSet.size());
-        //imprimir a matriz
-        int qtd = this.neuronsLine*this.neuronsColumn;
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < qtd; j++) {
-                DecimalFormat df = new DecimalFormat("#.###");
-                String formatted = df.format(this.weightMatrix[i][j]);
-                System.out.print(formatted + "\t");
-            }
-            System.out.println();
         }
         plot(); 
     }
     
     public int defineWinner(Example ex) {
+        System.out.println("***Caso de teste: " + ex.toString());
         
         int position = 0;
         double euclideanDistance = 0;
@@ -80,14 +72,17 @@ public class Kohonen {
         //verificar a posição na matriz de vetores
         int line = neuronWinner/this.neuronsLine;
         int column = neuronWinner%this.neuronsColumn;
-        
+        System.out.println("Neurônio Vencedor: " + line + "," + column);
+        System.out.println("Atualizando: ");
         //atualiza os pesos da vizinhança
-        for (int i = line - this.radius; i <= line + this.radius ; i++) {
+        for (int i = line - this.radius; i <= line + this.radius && i 
+                                                    < this.neuronsLine ; i++) {
             //linha não pode ser negativa
             if (i < 0) 
                 i = 0;
             
-            for (int j = column - this.radius; j <= column + this.radius; j++) {
+            for (int j = column - this.radius; j <= column + this.radius
+                    && j < this.neuronsColumn; j++) {
                 //coluna não pode ser negativa
                 if (j < 0) 
                     j = 0;
@@ -119,6 +114,12 @@ public class Kohonen {
         this.weightMatrix[0][index] += this.learningRate * (x0 - this.weightMatrix[0][index]);
         this.weightMatrix[1][index] += this.learningRate * (x1 - this.weightMatrix[1][index]);
         this.weightMatrix[2][index] += this.learningRate * (x2 - this.weightMatrix[2][index]);
+        
+        System.out.print(line + "," + column);
+        System.out.print(" => ");
+        System.out.print(this.weightMatrix[0][index] + "\t");
+        System.out.print(this.weightMatrix[1][index] + "\t");
+        System.out.println(this.weightMatrix[2][index]);
     }
     
     public void plot() {
@@ -138,6 +139,7 @@ public class Kohonen {
         title += "taxa aprend.:" + this.learningRate;
         title += "\tcamada de saída:" + this.neuronsLine + "x" + this.neuronsColumn;
         title += "\traio:" + this.radius;
+        title += "\t" + this.widthType;
         Plot.plot(title, x, y, z);
     }
 }

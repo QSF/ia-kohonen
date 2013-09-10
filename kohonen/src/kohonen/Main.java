@@ -16,10 +16,15 @@ public class Main {
     public static void main(String[] args) {
         // TODO code application logic here
         String configFile = "config.properties";
-        if (args.length == 1) {
+        if (args.length >= 1) {
             configFile = args[0];
         }
+        String widthType = "";
+        if (args.length == 2) {
+            widthType = args[1];
+        }
+        
         Configuration configuration = new Configuration(configFile);
-        new Kohonen(configuration).execute();
+        new Kohonen(configuration, widthType).execute();
     }
 }
