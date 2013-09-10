@@ -1,0 +1,57 @@
+\title{Redes Auto-Organizáveis: Mapas de Kohonen}
+\author{}
+\date{\today}
+
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Este artigo apresenta uma implementação de um modelo de rede neural auto-organizável conhecida como mapas auto-organizáveis de Kohonen ou redes SOM (do inglês \textit{Self-Organizing Maps}).
+\end{abstract}
+
+\section{Introdução}\label{introducao}
+
+\section{Redes SOM}\label{som}
+
+\subsection{Treinamento}\label{treinamento}
+A rede SOM utiliza um algoritmo de aprendizado competitivo e não-supervisionado. para o aprendizado da rede. Um padrão de entrada é apresentado a rede, um neurônio vencem e inicia a atualização dos pesos do neurônio vencedor e de seus vizinhos (até um raio de vizinhança). Isto repete para cada nova entrada e a taxa de aprendizado e o raio de vizinhança são decrementados durante o processo.[Braga]
+
+Atualização dos pesos do neurônio vencedor e de seus vizinhos:
+
+\[ w_{ji}(t+1) = \left\{ 
+  \begin{array}{l l}
+    w_{ji}(t) + \eta(t)(x_{i}- w_{ji}(t)) & \quad \text{se j $\in$ $\Lambda$(t)}\\
+    w_{ji}(t) & \quad \text{caso contrário}
+  \end{array} \right.\]
+
+Onde $w_{ji}$ é o peso entre os neurônios i e j, $\eta(t)$ é a taxa de aprendizado e $\Lambda$ é a vizinhança.
+
+\begin{verbatim}
+1:  Inicializar pesos e parâmetros;
+2:  repita
+3:     para todo padrão de treinamento faça
+4:        Definir neurônio vencedor;
+5:        Atualizar os pesos deste neurônio e de seus vizinhos;
+6:        se o número do ciclo for múltiplo de N então
+7:           Então reduzir a taxa de aprendizado;
+8:        fim-se
+9:     fim-para
+10: até que mapa de características não mudar
+\end{verbatim}
+
+\section{Métodos}\label{metodos}
+
+
+\section{Resultados}\label{resultados}
+
+
+\section{Conclusão}\label{conclusao}
+
+
+\bibliographystyle{abbrv}
+\bibliography{simple}
+
+\end{document}
