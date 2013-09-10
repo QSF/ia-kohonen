@@ -9,7 +9,6 @@ import org.math.plot.*;
  */
 public class Plot {
     public static void plot(String title, double[] x, double[] y, double[] z) {
-        
         Plot3DPanel plot = new Plot3DPanel();
         plot.addScatterPlot(title, x, y, z);
         

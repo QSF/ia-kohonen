@@ -133,6 +133,11 @@ public class Kohonen {
             y[i] = this.weightMatrix[1][i];
             z[i] = this.weightMatrix[2][i];
         }
-        Plot.plot("Kohonen", x, y, z);
+        
+        String title = "";
+        title += "taxa aprend.:" + this.learningRate;
+        title += "\tcamada de saída:" + this.neuronsLine + "x" + this.neuronsColumn;
+        title += "\traio:" + this.radius;
+        Plot.plot(title, x, y, z);
     }
 }
