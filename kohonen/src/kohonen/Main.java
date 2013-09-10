@@ -4,8 +4,6 @@
  */
 package kohonen;
 
-import java.util.Random;
-
 /**
  *
  * @author sean
@@ -22,7 +20,7 @@ public class Main {
             configFile = args[0];
         }
         String widthType = "";
-        if (args.length == 2) {
+        if (args.length >= 2) {
             widthType = args[1];
         }
         
