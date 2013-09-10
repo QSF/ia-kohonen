@@ -4,8 +4,6 @@
  */
 package kohonen;
 
-import java.util.Random;
-
 /**
  *
  * @author sean
@@ -16,17 +14,26 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-        String configFile = "config.properties";
+        boolean isRealTime = false;
+        //real time ou não
         if (args.length >= 1) {
-            configFile = args[0];
+            if (args[0].equals("-rt=true"))
+                isRealTime = true;
+        } else {
+            System.out.println("Faltando argumento -rt=");
+            System.exit(-1);
+        }
+        
+        String configFile = "config.properties";
+        if (args.length >= 2) {
+            configFile = args[1];
         }
         String widthType = "";
-        if (args.length == 2) {
-            widthType = args[1];
+        if (args.length >= 3) {
+            widthType = args[2];
         }
         
         Configuration configuration = new Configuration(configFile);
-        new Kohonen(configuration, widthType).execute();
+        new Kohonen(isRealTime, configuration, widthType).execute();
     }
 }

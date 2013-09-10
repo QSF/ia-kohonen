@@ -12,7 +12,11 @@ import java.util.List;
  * @author sean
  */
 public class Kohonen {
+    private Plot plot;
     private String widthType;
+    
+    private boolean isRealTime;
+    private String title;
     
     private double learningRate;
     private int radius;
@@ -21,23 +25,39 @@ public class Kohonen {
     private int neuronsLine;
     private int neuronsColumn;
     
-    public Kohonen(Configuration configuration, String widthType) {        
-        this.widthType = widthType;
+    public Kohonen(boolean isRealTime,Configuration configuration, String widthType) {        
+        this.isRealTime = isRealTime;
+        
         learningRate = configuration.getLearningRate();
         radius = configuration.getRadius();
         trainingSet = configuration.getTrainingSet();
         weightMatrix = configuration.getMatrix();
         neuronsLine = configuration.getNeuronsLine();
         neuronsColumn = configuration.getNeuronsColumn();
+        
+        this.widthType = widthType;
+        
+        this.title = "";
+        title += "taxa aprend.:" + this.learningRate;
+        title += "\tcamada de saída:" + this.neuronsLine + "x" + this.neuronsColumn;
+        title += "\traio:" + this.radius;
+        title += "\t" + this.widthType;
+        if (this.isRealTime)
+            this.plot = new Plot(title);
+        
     }
     
     public void execute() {
         System.out.println("Começando o treinamento ...");
         for (Example ex : this.trainingSet) {
+            if (this.isRealTime)
+                this.plotChart();
             int winner = defineWinner(ex);
             updateWeight(winner, ex);
         }
-        plot(); 
+        if (!this.isRealTime)
+            this.plot = new Plot(title);
+        this.plotChart();
     }
     
     public int defineWinner(Example ex) {
@@ -121,7 +141,7 @@ public class Kohonen {
         System.out.println(this.weightMatrix[2][index]);
     }
     
-    public void plot() {
+    public void plotChart() {
         int neuronsQuantity = this.neuronsLine*this.neuronsColumn;
         
         double[] x = new double[neuronsQuantity];
@@ -133,12 +153,6 @@ public class Kohonen {
             y[i] = this.weightMatrix[1][i];
             z[i] = this.weightMatrix[2][i];
         }
-        
-        String title = "";
-        title += "taxa aprend.:" + this.learningRate;
-        title += "\tcamada de saída:" + this.neuronsLine + "x" + this.neuronsColumn;
-        title += "\traio:" + this.radius;
-        title += "\t" + this.widthType;
-        Plot.plot(title, x, y, z);
+        this.plot.plot(x, y, z);
     }
 }
