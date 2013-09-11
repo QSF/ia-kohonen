@@ -1,11 +1,11 @@
 %!TEX root = ../artigo.tex
 \section{Resultados}
-A rede neural auto-organizável implementada nesse trabalho, utilizou o algoritmo Mapa de Kohonen, desenvolvido por
+A rede neural auto-organizável implementada nesse trabalho, utilizou o modelo Mapa de Kohonen, desenvolvido por
 Teuvo Kohonen em 1982 \cite{Kohonen}. A implementação deste trabalho pode ser vista em \url{https://github.com/QSF/ia-kohonen}.
 
 Para os resultados práticos, a rede foi treinada com um conjunto de 1728 exemplos de dados reais, fornecidos pelo site \textit{UCI Machine Learning Repository}\footnote{http://archive.ics.uci.edu/ml/}, variando valores da taxa de aprendizado, pesos iniciais, raio da vizinhança e quantidade de neurônios na rede. O conjunto de exemplos escolhido foi o \textit{Car Evaluation}\footnote{http://archive.ics.uci.edu/ml/datasets/Car+Evaluation}, onde dados os atributos preço de compra do veículo, custo da manutenção, quantidade de portas do veículo, número de passageiros, tamanho do bagageiro e segurança estimada do veículo, avalia se o veículo é aceitável, inaceitável, bom ou muito bom.
 
-Uma vez que o algoritmo Mapa de Kohonen organiza ou agrupa dimensionalmente os dados, o conjunto de exemplos foi adaptado, apresentando somente três dimensões (preço de compra do veículo, custo da manutenção e segurança estimada do veículo). O primeiro e segundo atributo aceitos os valores {low, med, high e vhigh}, enquanto que o útilo aceita os valores {low, med, high}.
+Uma vez que o algoritmo Mapa de Kohonen organiza ou agrupa dimensionalmente os dados, o conjunto de exemplos foi adaptado, apresentando somente três dimensões (preço de compra do veículo, custo da manutenção e segurança estimada do veículo). O primeiro e segundo atributo aceitam os valores \{low, med, high e vhigh\}, enquanto que o último aceita os valores \{low, med, high\}.
 
 Com o conjunto de dados coletados, algumas entradas foram testadas para verificar a modificação final da rede. Esses testes serão exibidos a seguir, sendo dividido pela quantidade de neurônios na camada de saída (16, 20, 25 e 36 neurônios).
 
@@ -124,25 +124,25 @@ inicializados com valores iguais, faz o algoritmo convergir mais rapidamente.
 
 \begin{figure}[ht!]
 	\centering
-	\includegraphics[scale=0.65]{./imgs/2a1.png}
+	\includegraphics[scale=0.4]{./imgs/2a1.png}
 	\caption{Taxa de aprendizado: 0.8662815917277779; Raio: 1; Pesos iniciais: A}
 \end{figure}
 
 \begin{figure}[ht!]
 	\centering
-	\includegraphics[scale=0.65]{./imgs/2a2.png}
+	\includegraphics[scale=0.4]{./imgs/2a2.png}
 	\caption{Taxa de aprendizado: 0.8662815917277779; Raio: 2; Pesos iniciais: A}
 \end{figure}
 
 \begin{figure}[ht!]
 	\centering
-	\includegraphics[scale=0.65]{./imgs/2b1.png}
+	\includegraphics[scale=0.4]{./imgs/2b1.png}
 	\caption{Taxa de aprendizado: 0.5980629675758204; Raio: 1; Pesos iniciais: B}
 \end{figure}
 
 \begin{figure}[ht!]
 	\centering
-	\includegraphics[scale=0.65]{./imgs/2b2.png}
+	\includegraphics[scale=0.4]{./imgs/2b2.png}
 	\caption{Taxa de aprendizado: 0.5980629675758204; Raio: 2; Pesos iniciais: B}
 \end{figure}
 
@@ -152,26 +152,26 @@ uma rede com 36 neurônios.
 
 \begin{figure}[ht!]
 	\centering
-	\includegraphics[scale=0.65]{./imgs/2d1.png}
+	\includegraphics[scale=0.4]{./imgs/2d1.png}
 	\caption{Taxa de aprendizado: 0.2625656059885696; Raio: 1; Pesos iniciais: D}
 \end{figure}
 
 \begin{figure}[ht!]
 	\centering
-	\includegraphics[scale=0.65]{./imgs/2d2.png}
+	\includegraphics[scale=0.4]{./imgs/2d2.png}
 	\caption{Taxa de aprendizado: 0.2625656059885696; Raio: 2; Pesos iniciais: D}
 \end{figure}
 
 \begin{figure}[ht!]
 	\centering
-	\includegraphics[scale=0.65]{./imgs/2e1.png}
+	\includegraphics[scale=0.4]{./imgs/2e1.png}
 	\caption{Taxa de aprendizado: 0.5517820314689292; Raio: 1; Pesos iniciais: E}
 \end{figure}
 
 \newpage
 \begin{figure}[ht!]
 	\centering
-	\includegraphics[scale=0.65]{./imgs/2e2.png}
+	\includegraphics[scale=0.4]{./imgs/2e2.png}
 	\caption{Taxa de aprendizado: 0.5517820314689292; Raio: 2; Pesos iniciais: E}
 \end{figure}
 

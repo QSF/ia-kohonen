@@ -30,14 +30,10 @@
 Este artigo apresenta uma implementação de um modelo de rede neural auto-organizável conhecida como mapas auto-organizáveis de Kohonen ou redes SOM (do inglês \textit{Self-Organizing Maps}).
 \end{abstract}
 
-\section{Introdução}\label{introducao}
-
 \include{./som/estrutura}
 
 \subsection{Treinamento}\label{treinamento}
-A rede SOM utiliza um algoritmo de aprendizado competitivo e não-supervisionado. Um padrão de entrada é apresentado a rede, um neurônio vencem e inicia a atualização dos pesos do neurônio vencedor e de seus vizinhos (até um raio de vizinhança). Isto repete para cada nova entrada e a taxa de aprendizado e o raio de vizinhança são decrementados durante o processo.[Braga]
-
-Atualização dos pesos do neurônio vencedor e de seus vizinhos:
+A rede SOM utiliza um algoritmo de aprendizado competitivo e não-supervisionado. Um padrão de entrada é apresentado a rede, um neurônio vence e inicia a atualização de seus pesos e de seus vizinhos (até um raio de vizinhança). Isto repete para cada nova entrada e a taxa de aprendizado e o raio de vizinhança são decrementados durante o processo \cite{Braga,Haykin}. A atualização dos pesos do neurônio vencedor e de seus vizinhos é dada como segue:
 
 \[ w_{ji}(t+1) = \left\{ 
   \begin{array}{l l}
@@ -62,14 +58,7 @@ Onde $w_{ji}$ é o peso entre os neurônios i e j, $\eta(t)$ é a taxa de aprend
 
 \include{./som/cor}
 
-\section{Métodos}\label{metodos}
-
-
 \include{./resultados/resultados}
-
-
-\section{Conclusão}\label{conclusao}
-
 
 \bibliographystyle{plain}
 \bibliography{artigo}
